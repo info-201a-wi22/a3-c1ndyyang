@@ -133,19 +133,3 @@ us_mapplot <- ggplot(state_shape) +
 
 us_mapplot
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

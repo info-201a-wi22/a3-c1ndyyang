@@ -1,0 +1,115 @@
+---
+title: "Assignment 3: Data Visualization (incarceration)"
+author: "Cindy Yang"
+date: February 25, 2022
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo=FALSE, include=FALSE}
+
+source("analysis.R")
+
+library(knitr)
+```
+
+# Introduction
+
+Over the course of history, the Black community has always been unjustly condemned due to their race. Because of this, it is not rare for them to be wrongly arrested for crimes they did not do or had any part of. We want to analyze the comparison of how much more of the Black community are arrested and sent to jail than to other races. We will be focusing on the Black prisoner population in both Washington specifically, and the United States as a whole.
+
+# Summary Information
+
+For my data analysis, I focused on 5 relevant values of interest.
+
+### Value 1
+
+What county in WA had the highest number of Blacks in prison in the latest year?
+
+```{r echo=FALSE}
+highest_pop_county
+```
+
+### Value 2
+
+What was the ratio of Blacks in prison from the latest year in that county?
+
+```{r echo=FALSE}
+ratio_black_jail
+```
+
+### Value 3
+
+What was the percent Black prison population ratio change difference from the earliest year to the latest year in Washington?
+
+```{r echo=FALSE}
+earliest_ratio
+```
+
+### Value 4
+
+What was the ratio of Blacks living in that county in the latest year?
+
+```{r echo=FALSE}
+black_county_pop
+```
+
+### Value 5
+
+What is the average Black prison population ratio in Washington?
+
+```{r echo=FALSE}
+avg_black_ratio
+```
+
+# Data
+
+### Who collected the data?
+
+We used the incarceration data collected by the Vera Institute of Justice in order to prioritize the visualization of incarnation of people of color, gender, immigrants, and those experiencing poverty.
+
+### How was the data collected or generated?
+
+Through grants and multiple publications, the Vera Institute collected data by examining many datasets and compiling them all into one big dataset. In 2018, Vera used original jail datasets and merged them with county-level datasets, making the first national dataset that touches base on both jail and prison incarceration at county level.
+
+### Why was the data collected?
+
+The Vera Institute of Justice aims for such data collection to strategically showcase the patterns of inequality in race, gender, and so on. This way, it promotes the minimization of misinformation when comparing such data of incarnation.
+
+### How many observations (rows) are in the data?
+
+There are 153,811 observations in the data.
+
+### How many features (columns) are in the data?
+
+There are 121 features in the data.
+
+### What are possible limitations or problems with this data?
+
+There were some possible limitations that showed up when trying to analyze the provided data. One of those limitations for me were the values that were entered in as "NA" in multiple of the features, which therefore I could not include when calculating certain intended values. Though these "NA" values are only a small percentage of all the data that did include values, it still limits what could have been included in the analysis as a whole. Another limitation that includes an "NA" value is when projecting the choropleth map, the state dataset includes the state "DC", which represents the District of Columbia. However, this is not a state, rather a district. So although we have the data for it, it cannot be included in the US state map. Another limitation that was brought up was when filtering to the latest date, the most recent year in the dataset was 2018. So although there is data that has been recorded throughout a long period of time, for the values I intended to find, it would have been a bit more accurate if some more recent data was available to analyze. Another thing we could think about is what is considered a prisoner that takes part of the recorded population. Does the number stay the same if someone was convicted unjustly? Such questions such as this one limit what the population number means as we only see it as a number.
+
+# Trends Over Time Chart
+
+```{r echo=FALSE, message=FALSE}
+trend_over_time
+```
+
+In the chart above, I intend to show 5 states and their Black prisoner population throughout the years. The top 5 states were calculated based on which state had the highest incarceration population for Black people in the most recent year. After gathering those 5 states, I plotted those states' Black prisoner population over the course of time from the dataset. Based on the trend plotted above, we see a huge increase in Black incarceration population from Texas in the beginning, and continues to stay above the rest of the states' incarceration population onward. Though there is no direct association for this trend, it is possible that it is because of the racial inequality that is commonly known in Texas, as underrepresentation is a huge issue.
+
+# Variable Comparison Chart
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+race_pop_linechart
+```
+
+The chart above represents the disparities between the total prisoners population in Washington of certain races and how it compares to the total jail capacity in Washington. The total population includes the prisoner population of each state and certain races summed up per year. This way, we can see how incarceration trends between those races throughout the years. Choosing the top three races with the highest incarceration population, we can see how the White prisoner population stayed trending above the other two races throughout time within Washington. It is also worth noting how each race increase and decreases somewhat alongside with the total jail capacity of Washington, therefore never overlapping over the jail capacity.
+
+# Map
+
+```{r echo=FALSE}
+us_mapplot
+```
+
+The map above showcases the Black prisoner population in each state over the latest year. Here, we can see what state has the highest population density of Black prisoners and which state has the lowest population density. It did not surprise me to see that Texas, Florida, California, Alabama, and Louisiana had the highest population density, since those areas are high in population numbers. The same did not surprise me to see a lot of the rural states to have low population density in Black prisoners, since their overall population numbers are lower compared to other states. One pattern we could take from this trend is how a lot of the southern states are seen to have higher Black prisoner population density. We can also note that if we want to work with specific states and their Black prisoner population density, it would probably be best to avoid the more rural states as they seem as though they do not have a lot of data to analyze in this kind of topic.
